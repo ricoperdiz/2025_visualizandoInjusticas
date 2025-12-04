@@ -52,7 +52,7 @@ Criado por **Ross Ihaka** e **Robert Gentleman**, o R é amplamente utilizado po
 
 ## Minicurso
 
-{{< revealjs "por-que-r.html" >}}
+{{< revealjs "minicurso.html" >}}
 
 ----------
 

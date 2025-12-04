@@ -29,9 +29,9 @@ website:
   comments:
     giscus:
       repo: ricoperdiz/2025_visualizandoInjusticas
-      repo-id: "R_kgDOQPp62A"
+      repo-id: "R_kgDOQiDeGA"
       category: "Announcements"
-      category-id: "DIC_kwDOQPp62M4CxdWp"
+      category-id: "DIC_kwDOQiDeGM4CzZne"
       mapping: pathname
       reactions-enabled: true
       loading: lazy
@@ -56,8 +56,6 @@ bibliography:
   - C:/Users/ricop/OneDrive/Documentos/CIENCIA/bibtex/geral.bib
   - C:/Users/ricop/OneDrive/Documentos/CIENCIA/bibtex/apg.bib
   - C:/Users/ricop/OneDrive/Documentos/CV/pubs.bib
-
-# csl: associacao-brasileira-de-normas-tecnicas.csl
 
 lang: pt-br
 
