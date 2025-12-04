@@ -145,7 +145,7 @@ knitr::include_url(
 ## Arquivos `CSV`
 
 ```{r}
-#| include: false
+#| echo: false
 dados_2020_01 <-
   read.table(
     "dados/disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.csv",
@@ -153,6 +153,18 @@ dados_2020_01 <-
     dec = ".",
     header = TRUE
   )
+dados_2020_01
+```
+
+```{r}
+dados_2020_01 <-
+  read.table(
+    "disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.csv",
+    sep = ",",
+    dec = ".",
+    header = TRUE
+  )
+dados_2020_01
 ```
 
 ---
