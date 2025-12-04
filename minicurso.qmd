@@ -125,9 +125,10 @@ library("readxl")
 # Pacote `dplyr`
 
 ```{r}
-#| eval: false
+#| eval: true
+#| echo: false
 knitr::include_url(
-  "https://www.ricardoperdiz.com/blog/2020-04-08-basertidyverse//"
+  "https://www.ricardoperdiz.com/blog/2020-04-08-basertidyverse/"
 )
 ```
 

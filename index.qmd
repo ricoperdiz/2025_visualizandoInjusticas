@@ -28,7 +28,7 @@ Baixe aqui:
 
 ## Apresentação do minicurso
 
-O objetivo deste minicurso é introduzir o uso da linguagem **R** e do ambiente **RStudio** para análise exploratória de dados, com foco em aplicações nas **Ciências humanas**.  
+O objetivo deste minicurso é introduzir o uso do ambiente **R** para análise exploratória de dados, com foco em aplicações nas **Ciências humanas**.  
 Ao final, você terá uma pintura geral sobre os conhecimentos necessários para importar, manipular, agrupar e contar, e visualizar dados simples em R.  
 
 Apresentaremos resumidamente comandos básicos em R que cobrem quase todo o ciclo da análise de dados: importação, checagem, transformação e visualização.
