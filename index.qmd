@@ -1,0 +1,62 @@
+---
+encoding: "UTF-8"
+title: "Visualizando injustiças: introdução ao R para análise e apresentação de dados"
+
+subtitle: "Direitos humanos, Cidadania e Justiça em perspectiva multidimensional | PPGSOF UFRR | 2025"
+
+date: "04 Dec 2025"
+
+format:
+  html:
+    toc: true
+    theme: 
+      light: cerulean
+      dark: solar
+
+---
+
+::: {.callout-note}
+## Dados da apresentação
+
+Baixe aqui:
+
+* [Acessar a aba Recursos e, em seguida, a opção **Primeiro semestre de 2020**](https://dados.gov.br/dados/conjuntos-dados/ouvidoria-nacional-de-direitos-humanos--ondh)
+
+* [Versão reduzida do conjunto anterior, com 1000 linhas sorteadas randomicamente](https://docs.google.com/spreadsheets/d/1L_WgbuCYN_4dS4Jcol3_HptVKyRDTKNC/edit?usp=drive_link&ouid=107115676585048825053&rtpof=true&sd=true)
+
+:::
+
+## Apresentação do minicurso
+
+O objetivo deste minicurso é introduzir o uso da linguagem **R** e do ambiente **RStudio** para análise exploratória de dados, com foco em aplicações nas **Ciências humanas**.  
+Ao final, você terá uma pintura geral sobre os conhecimentos necessários para importar, manipular, agrupar e contar, e visualizar dados simples em R.  
+
+Apresentaremos resumidamente comandos básicos em R que cobrem quase todo o ciclo da análise de dados: importação, checagem, transformação e visualização.
+Nosso intuito é demonstrar o poder do R enquanto ferramenta para a análise de dados.
+Oferecemos então uma introdução à importação de dados, checagem e transformação de dados, manipulação de dados, agrupamento e sumarização de dados, e, por fim, visualização de dados.  
+
+---
+
+## O que é o R?
+
+**R** é uma linguagem de programação e um ambiente de software livre voltado à **análise estatística**, **exploração** e **visualização de dados** [@IhakaGentleman1996].  
+Criado por **Ross Ihaka** e **Robert Gentleman**, o R é amplamente utilizado por estatísticos, cientistas de dados e pesquisadores para **organizar**, **analisar** e **interpretar** grandes volumes de informação de forma eficiente e reprodutível [@WickhamGrolemund2017].  
+
+---
+
+## Por que **R**?
+
+{{< revealjs "por-que-r.html" >}}
+
+----------
+
+## Minicurso
+
+{{< revealjs "por-que-r.html" >}}
+
+----------
+
+## Referências citadas
+
+::: {#refs}
+:::

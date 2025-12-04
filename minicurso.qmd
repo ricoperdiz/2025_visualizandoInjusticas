@@ -1,0 +1,723 @@
+---
+encoding: "UTF-8"
+
+title: "Visualizando injustiças"
+subtitle: "Introdução ao R para análise e apresentação de dados"
+
+date: "04 Dec 2025"
+
+format:
+  revealjs:
+    theme: serif
+    slide-number: "c/t"
+    show-slide-number: print
+    incremental: true
+    chalkboard: true
+    # multiplex: true
+
+execute:
+  echo: true
+
+---
+
+```{r}
+#| include: false
+dimensoes <- data.table::fread(
+  "dados-brutos/disque100-primeiro-semestre-2020.csv",
+  na.strings = c("", "NA", "NULL")
+) |>
+  janitor::clean_names() |>
+  dim()
+dimensoes
+```
+
+
+## Sumário {.scrollable}
+
++ Apresentação pessoal
+
++ Dados do minicurso
+
++ Instalação e carregamento de pacotes em R
+
++ Importando dados
+
++ Checagem de dados
+
++ Limpeza e checagem
+
++ Manipulação de dados
+
++ Visualização
+
++ Lidando com textos
+
+---
+
+
+## Ricardo Perdiz
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+#| out-width: "90%"
+#| echo: false
+knitr::include_graphics("img/eu.JPG")
+```
+
+:::
+
+::: {.column width="60%"}
+Doutorado e mestrado em Ciências Biológicas (Botânica) - INPA e UEFS
+
+💘 Plantas, linguagens, análise de dados 💘 
+:::
+
+::::
+
+# Dados deste minicurso
+
++ [Dados das denúncias de violação de direitos humanos recebidas pelo Disque 100, a partir de 2020 registradas junto à central de atendimento da Ouvidoria Nacional de Direitos Humanos – ONDH](https://dados.gov.br/dados/conjuntos-dados/ouvidoria-nacional-de-direitos-humanos--ondh#:~:text=Primeiro%20semestre%20de%202020).  
+
++ Primeiro semestre de 2020.  
+
++ Versão reduzida - 1000 linhas.  
+
++ Conjunto original - `r dimensoes[1]` linhas 😱😱😱 e `r dimensoes[2]` colunas
+
+# Pacotes em R
+
++ Milhares de **pacotes** que estendem suas funcionalidades
+
++ CRAN  
+
++ Instalação e carregamento de pacotes  
+
+# `install.packages()` VS. `library()`
+
++ Instalamos pacotes R **uma vez apenas**, para cada versão de R que tivermos instalado no computador
+
++ Cada sessão nova de R - `library()`
+
+# Instalando pacotes
+
+```{r}
+#| eval: false
+#| echo: true
+# Instalar (executar uma única vez)
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("readxl")
+```
+
+# Carregando pacotes
+
+```{r}
+#| echo: true
+# Carregar
+library("dplyr")
+library("ggplot2")
+library("readxl")
+```
+
+# Pacote `dplyr`
+
+```{r}
+#| eval: false
+knitr::include_url(
+  "https://www.ricardoperdiz.com/blog/2020-04-08-basertidyverse//"
+)
+```
+
+::: aside
+[[https://www.ricardoperdiz.com/blog/2020-04-08-basertidyverse/](https://www.ricardoperdiz.com/blog/2020-04-08-basertidyverse/)]{.bg-blue .white}
+:::
+
+# Pacote ggplot2
+
+# Pacote readxl
+
+# 🧳 Importando dados 🎲
+
+## Arquivos `CSV`
+
+```{r}
+#| include: false
+dados_2020_01 <-
+  read.table(
+    "dados/disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.csv",
+    sep = ",",
+    dec = ".",
+    header = TRUE
+  )
+```
+
+---
+
+## Arquivos `xlsx`
+
+```{r}
+#| include: false
+dados_2020_01 <-
+  read_excel(
+    "dados/disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.xlsx"
+  )
+```
+
+Podemos ler arquivos `xlsx` utilizando a função `read_excel()` do pacote `readxl` [@readxl]:
+
+```{r}
+#| eval: false
+dados_2020_01 <-
+  read_excel(
+    "disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.xlsx"
+  )
+```
+
+---
+
+## Resultado da importação de dados 
+
++ Quando executamos a função `read.table()`, podemos acabar vendo muita coisa, o que pode acabar [incomodando]{.purple}  
+
++ `head()`
+
+---
+
+## {.scrollable}
+
+```{r}
+dados_2020_01 <-
+  read.table(
+    "dados/disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.csv",
+    sep = ",",
+    dec = ".",
+    header = TRUE
+  )
+head(dados_2020_01)
+```
+
+# Impressão concisa dos dados no console
+
+## {.scrollable}
+
+```{r}
+dados_2020_01 <-
+  read_excel(
+    "dados/disque100-primeiro-semestre-2020_1000Linhas-versaoReduzida.xlsx"
+  )
+dados_2020_01
+```
+
+# Busquem saber a diferença entre um `data.frame` e um `tibble`
+
+---
+
+## Outras formas de importar dados tabulares
+
++ Funções do pacote base: `read.csv()`, `read.delim()`, `readLines()`
+
++ `data.table::fread()`, `readr::read_delim()`
+
+# Inspeção básica
+
++ Diversas formas de inspecionar os dados
+
++ `head()`, `tail()`, `str()`, `summary()` e `dplyr::glimpse()`
+
+# `tail()` == últimas linhas
+
+```{r}
+tail(dados_2020_01)
+```
+
+# `str()` == estrutura
+
+```{r}
+str(dados_2020_01)
+```
+
+# `summary()` == sumário estatístico
+
+```{r}
+summary(dados_2020_01)
+```
+
+# `dim()` == dimensões
+
+```{r}
+dim(dados_2020_01)
+```
+
+# `dplyr::glimpse()` == versão da função `str()`
+
+```{r}
+dplyr::glimpse(dados_2020_01)
+```
+
+# Uma inspeção mais a fundo ...
+
+## Pacote [skimr](https://docs.ropensci.org/skimr/) {.scrollable}
+
+```{r}
+library("skimr")
+skim(dados_2020_01)
+```
+
+# 🧹 Limpeza e checagem de dados 👀
+
++ Dados do mundo real raramente são perfeitos  
+
++ Precisamos limpá-los  
+
++ **Dados ausentes (NA):**  
+
++ **Tipos de colunas:**  
+
+# Dados ausentes
+
+## Identificando valores ausentes
+
+```{r}
+is.na(dados_2020_01)
+```
+
+---
+
+## Quantos valores ausentes?
+
+```{r}
+sum(is.na(dados_2020_01))
+```
+
+# Removendo linhas com NA
+
++ função `na.omit()`  
+
+---
+
+## {.scrollable}
+
+```{r}
+na_removido <- na.omit(dados_2020_01)
+```
+
+---
+
+## Checando os dados após a remoção das linhas
+
+```{r}
+glimpse(na_removido)
+```
+
+# Ajuda para entender uma determinada função
+
++ `?FUNCAO`
+
++ A chamada **ajuda** [*help*]
+
+---
+
+## Exemplos de ajuda
+
+```{r}
+#| eval: false
+#| echo: true
+?read.table
+?na.omit
+?c
+?summary
+```
+
+
+# 🛠️ Manipulação e transformação de dados 🪛 com dplyr
+
+## Pacote `dplyr` 🪛
+
++ Parte do [tidyverse](https://tidyverse.org/)
+
++ [@dplyr] facilita a manipulação de dados com verbos simples e encadeáveis
+
+---
+
+## Funções com nomes fáceis de memorizar
+
+```{r}
+#| eval: false
+# Filtrando dados
+dados_2020_01 |>
+  filter(estado == "Roraima")
+
+# Selecionando colunas
+dados_2020_01 |>
+  select(denunciante)
+
+# Criando novas variáveis
+mutate(dados_2020_01, e_roraima = ifelse(estado == "Roraima", "sim", "não"))
+```
+
+# Operador pipe `|>`
+
++ Lê-se “então”
+
++ Ele envia o resultado de uma etapa para a próxima, tornando o código mais legível.
+
+---
+
+## Leia o código abaixo
+
+```{r}
+#| eval: false
+dados_2020_01 |> filter(estado == "Roraima")
+```
+
+---
+
+## O significado disso é
+
+> “pegue `dados_2020_01`, então filtre apenas as linhas em que o estado de ocorrência é Roraima.
+
+# Funções importantes
+
++ `select()`: Escolhe colunas  
+
++ `filter()`: Filtra linhas  
+
++ `mutate()`: Cria novas colunas ou altera existentes  
+
++ `group_by()` e `summarize()`: Agrupa dados para fazer resumos  
+
+---
+
+## Filtragem de dados - `dplyr::filter()`
+
+```{r}
+dados_2020_01 |>
+  filter(estado == "Roraima")
+```
+
+## Seleção de colunas - `dplyr::select()`
+
+```{r}
+dados_2020_01 |>
+  select(denuncia_emergencial)
+```
+
+---
+
+## Podemos selecionar mais de uma coluna
+
+```{r}
+dados_2020_01 |>
+  select(cenario_da_violacao, denuncia_emergencial)
+```
+
+---
+
+## Criação de novas colunas - `dplyr::mutate()` {.scrollable}
+
+```{r}
+dados_2020_01 |>
+  mutate(
+    e_roraima = ifelse(estado == "Roraima", "sim", "não")
+  ) |>
+  select(e_roraima)
+```
+
+---
+
+## Agrupamento e sumarização de dados - `group_by()` e `summarise()` {.scrollable}
+
+```{r}
+dados_2020_01 |>
+  group_by(estado) |>
+  summarise(
+    n = n()
+  )
+```
+
+---
+
+## `dplyr::count()`
+
+```{r}
+dados_2020_01 |>
+  count(estado)
+```
+
+# 📈 Visualização de dados 📊
+
++ Linguagem desenhada para visualizar dados
+
++ Possibilidades infinitas - quem determina o limite é o usuário
+
++ `ggplot2` [@Wickham2016] - uma "gramática de gráficos" [@Wilkinson2005]
+
++ Alguns exemplos utilizarão outro conjunto de dados - [`mtcars`](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)
+
+---
+
+## Funções básicas do pacote `ggplot2`
+
+
++ `ggplot()`: Define os dados e a estética (`aes()`).  
+
++ `geom_*`: Adiciona as camadas geométricas (pontos: `geom_point()`; barras: `geom_col()`; linhas: `geom_line()`).
+
+# Histograma
+
+```{r}
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram()
+```
+
+---
+
+## Outros argumentos
+
+```{r}
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(binwidth = 10, fill = "skyblue", color = "black")
+```
+
+# Visualizando relações entre variáveis
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point()
+```
+
+---
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(size = 5) +
+  theme(axis.text = element_text(size = 16))
+```
+
+# Explorando relações complexas
+
+Podemos adicionar mais variáveis aos nossos gráficos usando a estética.
+
++ `color`: Mapeia uma variável categórica para a cor.  
+
++ `facet_wrap()` e `facet_grid()`: Cria sub-gráficos para cada categoria.  
+
+---
+
+## Cores em variáveis - I
+
+```{r}
+ggplot(data = mtcars, aes(x = hp, y = mpg, col = disp)) +
+  geom_point()
+```
+
+---
+
+## Cores em variáveis - II
+
+```{r}
+ggplot(data = mtcars, aes(x = hp, y = mpg, col = gear)) +
+  geom_point(size = 5)
+```
+
+---
+
+## Cores em variáveis - III
+
+```{r}
+ggplot(data = mtcars, aes(x = hp, y = mpg, col = as.factor(gear))) +
+  geom_point(size = 4)
+```
+
+# Gráficos de facetas
+
++ Facilitam a visualização de dados por grupos
+
++ Duas funções que produzem as facetas
+
++ `facet_wrap()`, quando você quer visualizar dados por apenas uma variável  
+
++ `facet_grid()`, que deve ser utilizada quando você quer ver a combinação entre duas variáveis  
+
+# `facet_wrap()`
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  facet_wrap(~am)
+```
+
+# `facet_grid()`
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  facet_grid(am ~ cyl)
+```
+
+# Gráfico de barras com `geom_col()`
+
+## {.scrollable}
+
+```{r}
+dados_2020_01 |>
+  count(estado) |>
+  filter(n > 40) |>
+  ggplot(aes(x = estado, y = n, fill = estado)) +
+  geom_col() +
+  labs(title = "Top 5 estados brasileiros com maior número de ocorrências")
+```
+
+# Lidando com textos!
+
+```{r}
+library("tidytext")
+library("tibble")
+```
+
+---
+
+## {.scrollable}
+
+```{r}
+palavras_violacoes <-
+  dados_2020_01 |>
+  rownames_to_column() |>
+  rename(id_denuncia = rowname) |>
+  unnest_tokens(output = palavra, input = violacoes)
+```
+
+---
+
+## {.scrollable}
+
+:::: {.columns}
+
+::: {.column width = "50%"}
+```{r}
+dados_2020_01 |>
+  select(violacoes)
+```
+:::
+
+::: {.column width = "50%"}
+
+
+```{r}
+palavras_violacoes |>
+  select(palavra)
+```
+
+:::
+
+::::
+
+
+---
+
+:::: {.columns}
+
+::: {.column width = "30%"}
+
+```{r}
+#| eval: false
+#| echo: true
+palavras_violacoes |>
+  select(id_denuncia, palavra) |>
+  filter(grepl("violencia", palavra)) |>
+  count(palavra) |>
+  # arrange(desc(n))]
+  filter(n > 306) |>
+  ggplot(aes(x = palavra, y = n)) +
+  geom_col() +
+  labs(
+    title = "Top 5 tipos de violência mais frequentes\n no Disque 100 em 2020.1"
+  ) +
+  theme(axis.text.x = element_text(angle = 45))
+```
+
+:::
+
+::: {.column width = "70%"}
+
+```{r}
+#| eval: true
+#| echo: false
+palavras_violacoes |>
+  select(id_denuncia, palavra) |>
+  filter(grepl("violencia", palavra)) |>
+  count(palavra) |>
+  # arrange(desc(n))]
+  filter(n > 306) |>
+  ggplot(aes(x = palavra, y = n)) +
+  geom_col() +
+  labs(
+    title = "Top 5 tipos de violência mais frequentes\n no Disque 100 em 2020.1"
+  ) +
+  theme(axis.text.x = element_text(angle = 45))
+```
+
+:::
+
+::::
+
+---
+
+## {.center}
+
+```{r}
+#| eval: true
+#| echo: false
+palavras_violacoes |>
+  select(id_denuncia, palavra) |>
+  filter(grepl("violencia", palavra)) |>
+  count(palavra) |>
+  # arrange(desc(n))]
+  filter(n > 306) |>
+  ggplot(aes(x = palavra, y = n)) +
+  geom_col() +
+  labs(
+    title = "Top 5 tipos de violência mais frequentes\n no Disque 100 em 2020.1"
+  ) +
+  theme(axis.text.x = element_text(angle = 45))
+```
+
+---
+
+# Análise quantitativa de textos
+
++ [quanteda](https://quanteda.io/index.html)
+
++ [topicmodels](https://cran.r-project.org/web/packages/topicmodels/vignettes/topicmodels.pdf)
+
+---
+
+# Conclusão e próximos passos
+
+## **Onde seguir a partir daqui?** {.scrollable}
+
++ **Aprofunde-se na linguagem R**  [@VicentiniPerdiz2021].  
+
++ **Modelagem estatística** 
+
++ **Comunicação e visualização interativa** [shiny](https://shiny.posit.co/), [flexdashboard](https://pkgs.rstudio.com/flexdashboard/), [rmarkdown](https://rmarkdown.rstudio.com/), [quarto](https://quarto.org/).  
+
+
+# Grato!
+
+![](https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NmlqdmY2emJtOWt6YzM4OXlhNWV5ZzJqcXFxNGo2YXVuMmp0bWg0dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7DzlajZNY5D0I/giphy.gif)
+
+::: aside
+<ricoperdiz@gmail.com>
+:::
+
+---
+
+## Referências
+
+::: {#refs}
+:::
+

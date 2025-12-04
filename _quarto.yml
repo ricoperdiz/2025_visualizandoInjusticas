@@ -1,0 +1,63 @@
+project:
+  title: "Visualizando injustiças: introdução ao R para análise e apresentação de dados"
+  type: website
+  output-dir: site/
+  render:
+    - index.qmd
+    - por-que-r.qmd
+    - minicurso.qmd
+
+website:
+  title: "Visualizando injustiças: introdução ao R para análise e apresentação de dados"
+  favicon: img/favicon.ico
+  description: "Página do minicurso 'Visualizando injustiças: introdução ao R para análise e apresentação de dados', preparado especialmente para o evento 'Direitos humanos, Cidadania e Justiça em perspectiva multidimensional', uma realização do PPGSOF da Universidade Federal de Roraima, Brasil."
+  twitter-card:
+    image: img/tcard.png
+    card-style: "summary_large_image"
+    description: "Página do minicurso 'Visualizando injustiças: introdução ao R para análise e apresentação de dados', preparado especialmente para o evento 'Direitos humanos, Cidadania e Justiça em perspectiva multidimensional', uma realização do PPGSOF da Universidade Federal de Roraima, Brasil."
+  navbar:
+    logo: img/favicon.ico
+    href: https://visualizandoinjusticas.netlify.app/
+  site-url: "https://visualizandoinjusticas.netlify.app/"
+  issue-url: https://github.com/ricoperdiz/2025_visualizandoInjusticas/issues
+  repo-url: https://github.com/ricoperdiz/2025_visualizandoInjusticas
+  repo-actions: [edit, source, issue]
+  open-graph:
+    site-name: "Visualizando injustiças: introdução ao R para análise e apresentação de dados"
+    description: "Página do minicurso 'Visualizando injustiças: introdução ao R para análise e apresentação de dados', preparado especialmente para o evento 'Direitos humanos, Cidadania e Justiça em perspectiva multidimensional', uma realização do PPGSOF da Universidade Federal de Roraima, Brasil."
+    image: img/tcard.png
+  comments:
+    giscus:
+      repo: ricoperdiz/2025_visualizandoInjusticas
+      repo-id: "R_kgDOQPp62A"
+      category: "Announcements"
+      category-id: "DIC_kwDOQPp62M4CxdWp"
+      mapping: pathname
+      reactions-enabled: true
+      loading: lazy
+      input-position: top
+      theme:
+        light: "light"
+        dark: "purple_dark"
+      language: pt
+
+language:
+  search-box-placeholder: Busque aqui
+
+author:
+  - name: "R. O. Perdiz"
+    orcid: 0000-0002-2333-6549
+    email: ricoperdiz@gmail.com
+    affiliations: CBIO - UFRR
+
+date-format: "DD MMM YYYY"
+
+bibliography:
+  - C:/Users/ricop/OneDrive/Documentos/CIENCIA/bibtex/geral.bib
+  - C:/Users/ricop/OneDrive/Documentos/CIENCIA/bibtex/apg.bib
+  - C:/Users/ricop/OneDrive/Documentos/CV/pubs.bib
+
+# csl: associacao-brasileira-de-normas-tecnicas.csl
+
+lang: pt-br
+

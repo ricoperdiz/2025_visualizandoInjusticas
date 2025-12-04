@@ -1,0 +1,199 @@
+---
+encoding: "UTF-8"
+
+title: "Por que R?"
+
+date: "04 Dec 2025"
+
+format:
+  revealjs:
+    theme: serif
+    slide-number: "c/t"
+    show-slide-number: print
+    incremental: true
+    chalkboard: true
+    # multiplex: true
+
+execute:
+  echo: false
+---
+
+## Sumário
+
++ O que é o **R**?
+
++ Por que **R**?
+
++ Como podemos programar em **R**?
+
++ Instalação do **R** e **RStudio**
+
++ Recursos
+
+::: {.notes}
+Livremente inspirado em <https://gift.uni-goettingen.de/mcmmb/Day1_WhyR.html>
+:::
+
+---
+
+## O que é o **R**? I 
+
++ Uma linguagem de programação desenhada para a análise de dados
+
++ Sucessora da linguagem **S**
+
++ _"Tudo que existe em R é um objeto [@Chambers2017]"_.  
+
++ _"Tudo que acontece em R é resultado de uma função [@Chambers2017]"_.  
+
+::: {.notes}
+Interfaces com outros programas é parte do R.
+:::
+
+---
+
+## O que é o **R**? II
+
++ Ambiente de computação estatística
+  - Estatística básica
+  - Modelagem complexa (*machine learning*, simulações etc.)
+
++ Produção de gráficos
+
++ Intermediador de bancos de dados (`DBI`, `RPostgreSQL`, `RMariaDB` etc.)
+
++ [SIG](https://clubedogis.com.br/glossario/o-que-e-r-para-geoprocessamento/)
+
+---
+
+## O que é o **R**? III
+
++ Controle de versão (*Git*)
+
++ *Produtor de conteúdo*: artigos, livros, sítios digitais, currículos, teses (utilizando *Rmarkdown*/*Quarto*)
+
+---
+
+
+## {.center}
+
+::: {.r-fit-text}
+Ferramenta 🛠️🛠️🛠️
+:::
+
+---
+
+## {.center}
+
+::: {.r-fit-text}
+Pensar criticamente
+:::
+
+---
+
+## {.center}
+
+::: {.r-fit-text}
+Resolver problemas
+:::
+
+---
+
+## {.center}
+
+::: {.r-fit-text}
+Comunicação
+:::
+
+---
+
+## {.center}
+
+::: {.r-fit-text}
+⬆️⬆️⬆️Capacidade analítica
+:::
+
+---
+
+## Por quê R? {.center}
+
+::: {.r-fit-text}
+Transparência
+:::
+
+---
+
+## Por quê R? {.center}
+
+::: {.r-fit-text}
+Reprodutibilidade
+:::
+
+---
+
+## Por quê R? {.center}
+
+::: {.r-fit-text}
+Ciência aberta e acessível
+:::
+
+---
+
+## Como podemos programar em **R**? {.center}
+
+---
+
+## {background-image="img/rgui.png" background-repeat="no-repeat" background-size="contain"}
+
+---
+
+## {background-image="img/rstudiogui.png" background-repeat="no-repeat" background-size="contain"}
+
+::: {.notes}
+O RStudio possui quatro painéis principais:
+
+Console: onde você executa comandos.
+
+Source: onde você escreve e salva scripts.
+
+Environment: lista objetos carregados.
+
+Plots/Help/Files: mostra gráficos, ajuda e diretórios.
+:::
+
+
+---
+
+## Instalação do **R** e **RStudio**
+
+Caso você possua um computador, siga as instruções presentes na página abaixo:
+
+```{r}
+knitr::include_url(
+  "https://intror.netlify.app/caso-voc%C3%AA-possua-um-computador.html#caso-voc%C3%AA-possua-um-computador"
+)
+```
+
+---
+
+## Caso você não possua um computador ...
+
++ Faça o minicurso utilizando apenas um dispositivo com acesso à rede.  
+
++ O **R** rodará na própria página através do pacote JavaScript [WebR](https://docs.r-wasm.org/webr/latest/).  
+
+---
+
+## Recursos
+
++ Quer aprender **R**? Quer mergulhar no básico da linguagem? Estude nosso livro disponível em <https://intror.netlify.app/>
+
++ Se quiser aprender uma ferramenta de escrita científica chamada *Rmarkdown*, visite nosso livro disponível em <https://intrormarkdown.netlify.app/>
+
++ **R** avançado? Leia o livro [*Advanced R*](https://adv-r.hadley.nz/) [@Wickham2019].  
+
+---
+
+## Referências
+
+
